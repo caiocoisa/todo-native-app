@@ -7,6 +7,7 @@ export const ListItemsContext = createContext({} as ListItemsContextType);
 
 export const ListItemsProvider = ({ children }) => {
 	const [listItemsData, setListItemsData] = useState<ItemList[]>(LIST_ITEMS);
+	const [openModal, setOpenModal] = useState<boolean>(false);
 
 	const addItem = (data: ItemList) => {
 		setListItemsData([...listItemsData, data]);
@@ -25,9 +26,11 @@ export const ListItemsProvider = ({ children }) => {
 		<ListItemsContext.Provider
 			value={{
 				listItemsData,
+				openModal,
 				addItem,
 				deleteItem,
 				setItem,
+				setOpenModal,
 			}}
 		>
 			{children}
